@@ -51,7 +51,7 @@ ort_session = ort.InferenceSession(onnx_path)
 input_name = ort_session.get_inputs()[0].name
 
 # Khởi tạo video capture
-cap = cv2.VideoCapture("C:/Users/FUJITSU/OneDrive/Desktop/887362022534375799.mp4")
+cap = cv2.VideoCapture(0)
 
 threshold = 0.7
 sum_detections = 0
