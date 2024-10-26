@@ -1,0 +1,32 @@
+Nhận diện Đối tượng bằng Mô hình ONNX
+
+1. Giới thiệu
+Đoạn code thực hiện nhận diện đối tượng theo thời gian thực bằng cách sử dụng mô hình học sâu đã được huấn luyện và lưu trữ dưới định dạng ONNX (Open Neural Network Exchange). Đầu vào của chương trình là luồng video trực tiếp từ camera máy tính, và kết quả đầu ra là hình ảnh có các khung nhận diện bao quanh đối tượng, được hiển thị ngay trên màn hình.
+
+2. Mô Tả Hoạt Động Của Chương Trình
+2.1 Thư Viện và Công Nghệ Sử Dụng
+OpenCV: Được sử dụng để quản lý việc bắt hình ảnh từ camera và xử lý ảnh.
+NumPy: Hỗ trợ các tính toán số học và xử lý mảng.
+ONNX và ONNXRuntime: Cho phép tải mô hình đã huấn luyện sẵn và thực hiện suy luận trực tiếp.
+Hàm hỗ trợ xử lý khung hình: Cung cấp các tiện ích để xử lý các khung nhận diện (bounding box).
+
+2.2 Nguyên Lý Hoạt Động
+a. Tải mô hình và nhãn lớp đối tượng:
+- Chương trình sẽ đọc danh sách nhãn từ file voc-model-labels.txt.
+- Sau đó, tải mô hình đã huấn luyện sẵn từ file version-RFB-320.onnx sử dụng ONNX Runtime.
+
+b. Mở camera để bắt hình ảnh:
+- Sử dụng cv2.VideoCapture(0) để mở kết nối với camera máy tính.
+- Đọc từng khung hình từ camera và thực hiện xử lý.
+
+c, Xử lý hình ảnh và thực hiện suy luận:
+- Khung hình được chuyển đổi màu, thay đổi kích thước, và chuẩn hóa để phù hợp với đầu vào của mô hình.
+- Chạy mô hình ONNX để dự đoán các đối tượng xuất hiện trong khung hình.
+
+d, Hiển thị kết quả:
+- Vẽ khung nhận diện (bounding box) quanh các đối tượng được phát hiện.
+- Cập nhật và đếm tổng số lần chương trình nhận diện khuôn mặt.
+
+e, Kết thúc chương trình:
+- Người dùng có thể nhấn phím 'q' để dừng chương trình.
+Sau khi dừng, chương trình sẽ in ra tổng số lần chương trình nhận diện khuôn mặt.
